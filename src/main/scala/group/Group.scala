@@ -1,6 +1,7 @@
 package p2p.chat.group
 import p2p.chat.common.{AccountId, LocalTimestamp}
 import scala.collection.immutable.HashMap
+import p2p.chat.{BigAction, common}
 
 case class GroupId()
 
@@ -15,10 +16,6 @@ trait Payload:
 
 trait Timestamped:
   val timestamp: LocalTimestamp
-
-enum Action extends UID, Timestamped:
-  case Update(sender: AccountId, group: GroupId, creation: LocalTimestamp, timestamp: LocalTimestamp, text: String)
-  case Delete(sender: AccountId, group: GroupId, creation: LocalTimestamp, timestamp: LocalTimestamp)
 
 enum State extends Timestamped:
   case Updated(timestamp: LocalTimestamp, text: String)

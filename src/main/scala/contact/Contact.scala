@@ -1,6 +1,6 @@
 package p2p.chat.contact
 import p2p.chat.common.{AccountId, LocalTimestamp}
-
+import p2p.chat.{BigAction, common}
 import scala.collection.immutable.HashMap
 
 trait UID:
@@ -14,10 +14,6 @@ trait Payload:
 
 trait Timestamped:
   val timestamp: LocalTimestamp
-
-enum Action extends UID, Timestamped:
-  case Update(owner: AccountId, contact: AccountId, timestamp: LocalTimestamp, name: String, description: String)
-  case Delete(owner: AccountId, contact: AccountId, timestamp: LocalTimestamp)
 
 enum State extends Timestamped:
   case Updated(timestamp: LocalTimestamp, name: String, description: String)
